@@ -14,7 +14,6 @@ a:
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         $urlshort = $randomString;
-        $urlshort = 'abcd';
 
         if(!file_exists($urlshort .'/index.php')) {
             mkdir($urlshort, 0777, true);
