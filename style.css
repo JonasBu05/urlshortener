@@ -11,3 +11,8 @@ body {
     transform: translateX(-50%) translateY(-50%);
     position: absolute;
 }
+
+a {
+    color: white;
+    text-decoration: none;
+}

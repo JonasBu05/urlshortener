@@ -1,5 +1,7 @@
 <?php
 error_reporting(0);
+
+$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]" .'/' .$_GET['url'];
 ?>
 
 <html>
@@ -9,19 +11,18 @@ error_reporting(0);
 </head>
 
 <?php
+
 if($_GET['password'] == 'wrong') {
     echo 'Your Password was Wrong!';
 }
 elseif($_GET['link'] == 'success') {
-    echo 'Link Successful Created!';
+    echo '<a href="' .$url .'" target="_blank">' .$url .'</a>';
 }
 ?>
 
 <div id="content">
         <form method="post" action="create.inc.php">
             <input type="text" name="long" placeholder="target link">
-            <br>
-            <input type="text" name="short" placeholder="short link">
             <br>
             <input type="password" name="pwd" placeholder="password">
             <hr>

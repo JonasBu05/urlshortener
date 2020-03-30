@@ -1,21 +1,35 @@
 <?php
 
-require('config.php');
+    require('config.php');
 
-if($_POST['pwd'] == $password) {
+    if($_POST['pwd'] == $password) {
 
-    $url['long'] = $_POST['long'];
-    $url['short'] = $_POST['short'];
+a:
 
-    mkdir($url['short'], 0777, true);
+        $urllong = $_POST['long'];
 
-    $file = fopen($url['short'] ."/index.php", "w");
-    fwrite($file, "<?php header('Location: " .$url['long'] ."');");
+        $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        $charactersLength = strlen($characters);
+        for ($i = 0; $i < '4'; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        $urlshort = $randomString;
+        $urlshort = 'abcd';
 
-    fclose($file);
+        if(!file_exists($urlshort .'/index.php')) {
+            mkdir($urlshort, 0777, true);
 
-    header('Location: index.php?link=success');
-}
-else {
-    header('Location: index.php?password=wrong');
-}
+            $file = fopen($urlshort ."/index.php", "w");
+            fwrite($file, "<?php header('Location: " .$urllong ."');");
+
+            fclose($file);
+
+            header('Location: index.php?link=success&url=' .$urlshort);
+        }
+        else {
+            goto a;
+        }
+    }
+    else {
+        header('Location: index.php?password=wrong');
+    }

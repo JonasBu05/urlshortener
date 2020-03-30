@@ -1,3 +1,3 @@
 <?php
 
-$password = 'YourPassword';
+$password = '1';
