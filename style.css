@@ -1,0 +1,13 @@
+body {
+    background-color: #2b2b2b;
+    color: white;
+}
+
+#content {
+    background-color: #313335;
+    padding: 5%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+}
